@@ -2,15 +2,41 @@
 name = "mortgage"
 version = "0.1.0"
 authors = ["Youknowwho55 <dylan9112@gmail.com>"]
-edition = "2021"
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dioxus = { version = "0.6.0", features = ["router", "fullstack"] }
+dioxus = { version = "0.6.3", features = ["router", "fullstack"] }
+
+anyhow = "1.0.97"
+thiserror = "2.0.12"
+chrono = "0.4.40"
+serde = "1.0.219"
+
+serde-wasm-bindgen = "0.6.5"
+wasm-bindgen = "0.2.100"
+
 
 [features]
 default = ["desktop"]
 web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
 mobile = ["dioxus/mobile"]
+server = ["dioxus/server"]
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+opt-level = 1
+
+
+[profile.android-dev]
+inherits = "dev"
+opt-level = 1
+

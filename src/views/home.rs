@@ -26,8 +26,14 @@ pub fn Home() -> Element {
             input_size: Some(InputSize::Medium),
             label: Some("Username".to_string()),
             placeholder: Some("Enter your username".to_string()),
+        }
+        Input {
+            name: "username".to_string(),
+            input_type: Some(InputType::Text),
+            input_size: Some(InputSize::Medium),
+            label: Some("Username".to_string()),
+            placeholder: Some("Enter your username".to_string()),
             required: Some(true),
-                // other props as needed
         }
     }
 }

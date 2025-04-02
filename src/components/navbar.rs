@@ -18,6 +18,23 @@ pub fn Navbar() -> Element {
                 to: Route::Blog { id: 1 },
                 "Blog"
             }
+            Link {
+                to: Route::Products {id: 1},
+                "Products"
+            }
+            Link {
+                to: Route::About {},
+                "About"
+            }
+
+            Link {
+                to: Route::Team {},
+                "Team"
+            }
+            Link {
+                to: Route::Calculator {id: 1},
+                "Calculator"
+            }
         }
 
         Outlet::<Route> {}
