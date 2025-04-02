@@ -1,3 +1,9 @@
 /** @format */
 
 @import "tailwindcss";
+
+@theme {
+  --color-customGreen-400: oklch(0.81 0.085 134.05);
+  --color-customGreen-500: oklch(0.76 0.0851 134.48);
+  --color-customGreen-600: oklch(0.7 0.0808 133.19);
+}

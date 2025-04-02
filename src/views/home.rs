@@ -10,10 +10,9 @@ use dioxus::prelude::*;
 pub fn Home() -> Element {
     rsx! {
         Hero {}
-        Echo {}
         Button {
             button_scheme: ButtonScheme::Default,
-            button_size: ButtonSize::Large,
+            button_size: ButtonSize::Default,
             button_type: ButtonType::Submit,
             class: "custom-class".to_string(),
             id: "my-button".to_string(),

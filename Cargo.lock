@@ -2935,6 +2935,7 @@ dependencies = [
  "anyhow",
  "chrono",
  "dioxus",
+ "log",
  "serde",
  "serde-wasm-bindgen 0.6.5",
  "thiserror 2.0.12",

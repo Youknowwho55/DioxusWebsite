@@ -91,7 +91,7 @@ pub fn Input(props: InputProps) -> Element {
         }
         input {
             id: props.id,
-            class: "input input-bordered {input_class}",
+            class: "input m-2 input-bordered {input_class}",
             value: props.value,
             required: props.required,
             disabled: props.disabled,

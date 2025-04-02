@@ -13,7 +13,7 @@ anyhow = "1.0.97"
 thiserror = "2.0.12"
 chrono = "0.4.40"
 serde = "1.0.219"
-
+log = "0.4.27"
 serde-wasm-bindgen = "0.6.5"
 wasm-bindgen = "0.2.100"
 
