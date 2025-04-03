@@ -60,7 +60,11 @@ pub struct User {
     pub is_anonymous: Option<bool>,
     pub role: Option<String>,
     pub aud: String,
-}
+    pub bearer_token: String,
+pub refresh_token: String,}
+
+
+
 
 #[derive(serde::Serialize, serde::Deserialize, Debug)]
 pub struct Session {
@@ -212,8 +216,7 @@ pub async fn signout() -> Result<(), AuthResponseError> {
 }
 
 fn create_client() -> SupabaseClient {
-    // Instead of using dotenv, directly access environment variables
-    // This works better in WASM environments
+
     supabase_js_rs::create_client(
         &SUPABASE_URL,
         &SUPABASE_ANON_KEY

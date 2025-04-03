@@ -9,7 +9,7 @@ mod views;
 
 
 
-#[cfg(feature = "server")]
+// #[cfg(feature = "server")]
 mod server;
 pub mod client;
 

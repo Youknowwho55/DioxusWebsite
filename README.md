@@ -47,3 +47,5 @@ dx build --release
 dx bundle --platform desktop \
  --package-types "macos" \
  --package-types "dmg"
+
+[dependencies]
