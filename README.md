@@ -1,3 +1,5 @@
+<!-- @format -->
+
 a# Development
 
 Your new jumpstart project includes basic organization with an organized `assets` folder and a `components` folder.
@@ -13,7 +15,10 @@ npm install tailwindcss @tailwindcss/cli
 
 ```bash
 npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
+
 ```
+
+target/release/assets
 
 ### Serving Your App
 
@@ -28,3 +33,17 @@ To run for a different platform, use the `--platform platform` flag. E.g.
 ```bash
 dx serve --platform web
 ```
+
+## Inconify Icons
+
+Material Symbols Light by Google
+
+dx build --release
+
+## Bundling
+
+### Mac OS
+
+dx bundle --platform desktop \
+ --package-types "macos" \
+ --package-types "dmg"

@@ -6,4 +6,10 @@
   --color-customGreen-400: oklch(0.81 0.085 134.05);
   --color-customGreen-500: oklch(0.76 0.0851 134.48);
   --color-customGreen-600: oklch(0.7 0.0808 133.19);
+
+  /* Custom Colors Per Project*/
+  --color-primary: oklch(0.76 0.0851 134.48);
+  --color-secondary: oklch(0.94 0.0158 154.46);
+  --color-accent: oklch(0.96 0.0175 73.08);
+  --color-muted: oklch(0.99 0.0062 75.41);
 }

@@ -1,5 +1,17 @@
+// mod.rs
 pub mod button;
-pub use button::{Button, ButtonSize, ButtonScheme, ButtonType}; // Re-export enums
-
 pub mod input;
-pub use input::{Input, InputSize, InputType};
+pub mod card;
+pub mod inline_form;
+
+// Re-export from button module
+pub use button::{Button, ButtonSize, ButtonScheme, ButtonType};
+
+// Re-export from input module 
+pub use input::{Input, InputSize, InputType, InputProps};
+
+// Re-export from card module
+pub use card::{Card, CardBody, CardTitle};
+
+// Re-export from inline_form module
+pub use inline_form::{InlineForm, InlineFormProps};

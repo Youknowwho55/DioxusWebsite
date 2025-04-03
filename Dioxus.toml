@@ -1,4 +1,11 @@
 [application]
+name = "webtemplate"
+
+[bundle]
+identifier = "com.dioxuslabs"
+publisher = "Youknowwho55"
+icon = ["assets/icon.png"]
+
 
 [web.app]
 
@@ -19,6 +26,7 @@ script = []
 # Javascript code file
 # serve: [dev-server] only
 script = []
+
 
 
 
