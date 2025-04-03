@@ -8,7 +8,7 @@ pub mod inline_form;
 pub use button::{Button, ButtonSize, ButtonScheme, ButtonType};
 
 // Re-export from input module 
-pub use input::{Input, InputSize, InputType, InputProps};
+pub use input::{Input, InputSize, InputType, InputProps, TextInput, PasswordInput, DateInput, NumberInput,SelectInput};
 
 // Re-export from card module
 pub use card::{Card, CardBody, CardTitle};

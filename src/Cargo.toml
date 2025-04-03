@@ -2,7 +2,6 @@
 name = "axum-auth"
 version = "0.1.0"
 edition = "2021"
-publish = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -26,10 +25,9 @@ sqlx = { version = "0.8.3", features = [
 ], optional = true }
 http = { workspace = true, optional = true }
 tower = { workspace = true, optional = true }
-
 execute = "0.2.12"
 anyhow = "1.0.97"
-
+dotenv = "0.15.0"
 serde = "1.0.219"
 
 
