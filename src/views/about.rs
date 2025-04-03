@@ -1,6 +1,4 @@
-use crate::Route;
 use dioxus::prelude::*;
-use log::{info, trace, warn};
 
 
 #[component]

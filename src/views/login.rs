@@ -1,10 +1,11 @@
 use dioxus::prelude::*;
 
 use crate::{
-    components::{auth::Auth, layout::FlexStack},
+    components::layout::FlexStack,
     views::routes::GuardContext,
+    views::auth::Auth, 
 };
-use crate::client::auth::signin_with_google;
+// use crate::client::auth::signin_with_google;
 use crate::components::ui::button::Button;
 
 #[component]
@@ -12,7 +13,7 @@ pub fn Login() -> Element {
     let google_login = move |_| {
         spawn(async move {
             client! {
-                signin_with_google().await;
+                // signin_with_google().await;
             }
         });
     };

@@ -1,6 +1,11 @@
 use std::future::Future;
 use std::env;
 
+// At the top of your file
+#[cfg(target_arch = "wasm32")]
+use serde_wasm_bindgen::to_value;
+
+use serde_json::to_value;
 use dioxus::{
     prelude::{
         server_fn::{
@@ -14,7 +19,6 @@ use dioxus::{
 };
 use gloo::storage::Storage;
 use serde_json::Value;
-use serde_wasm_bindgen::to_value;
 use supabase_js_rs::*;
 use tracing::debug;
 use wasm_bindgen::{closure::Closure, JsValue};
@@ -67,7 +71,9 @@ pub struct Session {
 
 // get_user types
 #[derive(serde::Serialize, serde::Deserialize, Debug)]
-pub struct AuthError {}
+pub enum AuthError {
+    Unauthorized(String),
+}
 
 #[derive(serde::Serialize, serde::Deserialize, Debug)]
 struct GetUserData {
@@ -80,17 +86,32 @@ struct GetUserResponse {
     error: Option<AuthError>,
 }
 
-pub async fn get_user() -> Result<User, AuthError> {
-    let auth = CLIENT.read().auth();
-    if let Ok(res) = auth.get_user(None).await {
-        let res = serde_wasm_bindgen::from_value::<GetUserResponse>(res).unwrap();
-        if let Some(error) = res.error {
-            return Err(error);
-        }
 
-        return Ok(res.data.user.unwrap());
+
+
+
+pub async fn get_user() -> Result<User, AuthError> {
+    #[cfg(target_arch = "wasm32")]
+    {
+        let auth = CLIENT.read().auth();
+        if let Ok(res) = auth.get_user(None).await {
+            let res = serde_wasm_bindgen::from_value::<GetUserResponse>(res).unwrap();
+            if let Some(error) = res.error {
+                return Err(error);
+            }
+
+            return Ok(res.data.user.unwrap());
+        }
+        // Handle the case where auth.get_user() fails
+        return Err(AuthError::Unauthorized("Failed to get user".to_string()));
     }
-    panic!("todo error")
+
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        // Non-WASM fallback
+        // Return an AuthError that matches your error type
+        return Err(AuthError::Unauthorized("Authentication not available in non-WASM context".to_string()));
+    }
 }
 
 pub async fn on_state_change() {
@@ -147,23 +168,23 @@ pub async fn signin_with_password(
     panic!("todo error")
 }
 
-pub async fn signin_with_google() {
-    let auth = CLIENT.read().auth();
-    if let Ok(res) = auth
-        .sign_in_with_oauth(SignInWithOAuthCredentials {
-            provider: "google".to_string(),
-            options: to_value(&Options {
-                redirect_to: "http://localhost:8081/callback".to_string(),
-            })
-            .unwrap(),
-        })
-        .await
-    {
-        debug!("{res:?}");
-        return;
-    }
-    panic!("todo error");
-}
+// pub async fn signin_with_google() {
+//     let auth = CLIENT.read().auth();
+//     if let Ok(res) = auth
+//         .sign_in_with_oauth(SignInWithOAuthCredentials {
+//             provider: "google".to_string(),
+//             options: to_value(&Options {
+//                 redirect_to: "http://localhost:8081/callback".to_string(),
+//             })
+//             .unwrap(),
+//         })
+//         .await
+//     {
+//         debug!("{res:?}");
+//         return;
+//     }
+//     panic!("todo error");
+// }
 
 pub async fn set_session(access_token: String, refresh_token: String) {
     let auth = CLIENT.read().auth();

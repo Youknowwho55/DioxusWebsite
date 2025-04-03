@@ -1,4 +1,3 @@
-use crate::Route;
 use dioxus::prelude::*;
 
 
@@ -6,13 +5,12 @@ use dioxus::prelude::*;
 pub fn Team() -> Element {
     rsx! {
 
-        div {
-            id: "team",
+        div { id: "team",
 
             // Content
             h1 { "This is the Team Section!" }
             p { "Info about us." }
-
+        
 
         }
     }

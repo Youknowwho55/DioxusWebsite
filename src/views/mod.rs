@@ -21,3 +21,4 @@ pub mod login;
 pub mod protected;
 pub mod routes;
 pub mod callback;
+pub mod auth;

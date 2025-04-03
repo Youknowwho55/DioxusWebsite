@@ -1,9 +1,7 @@
 
 use crate::components::{Hero, Steps};
-
 use crate::views::routes::Routes;
-
-use dioxus::{document::StyleProps, prelude::*};
+use dioxus:: prelude::*;
 
 
 

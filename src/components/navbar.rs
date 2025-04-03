@@ -1,54 +1,29 @@
-// use crate::Route;
-// use crate::components::Button;
-// use crate::components::ui::button::{ButtonSize, ButtonScheme, ButtonType};
-// use dioxus::prelude::*;
+use dioxus::prelude::*;
 
-// #[component]
-// pub fn Navbar() -> Element {
-//     rsx! {
-//         div { class: "flex flex-row justify-end items-center",
-//             Link {
-//                 class: "text-black-600 mr-5 no-underline transition-colors duration-200 hover:text-blue-300",
-//                 to: Route::Home {},
-//                 "Home"
-//             }
-//             Link {
-//                 class: "text-black-600 mr-5 no-underline transition-colors duration-200 hover:text-blue-300",
-//                 to: Route::Blog { id: 1 },
-//                 "Blog"
-//             }
-//             Link {
-//                 class: "text-black-600 mr-5 no-underline transition-colors duration-200 hover:text-blue-300",
-//                 to: Route::Products { id: 1 },
-//                 "Products"
-//             }
-//             Link {
-//                 class: "text-black-600 mr-5 no-underline transition-colors duration-200 hover:text-blue-300",
-//                 to: Route::About {},
-//                 "About"
-//             }
-//             Link {
-//                 class: "text-black-600 mr-5 no-underline transition-colors duration-200 hover:text-blue-300",
-//                 to: Route::Team {},
-//                 "Team"
-//             }
-//             Link {
-//                 class: "text-black-600 mr-5 no-underline transition-colors duration-200 hover:text-blue-300",
-//                 to: Route::Calculator { id: 1 },
-//                 "Calculator"
-//             }
+#[component]
+pub fn Navbar(nav_items: Vec<Element>) -> Element {
+    rsx! {
+        div { class: "flex flex-row justify-between items-center p-4 bg-gray-800",
+            // Add site logo/title on the left
+            div { class: "text-white text-xl font-bold", "My Dioxus App" }
+            // Navigation links in the middle
+            div { class: "flex space-x-4 text-black-600 mr-5 no-underline transition-colors duration-200 hover:text-blue-300",
+                for nav in nav_items {
+                    {nav}
+                }
+            }
+        }
+    }
+}
 
-//             Button {
-//                 button_scheme: ButtonScheme::Custom,
-//                 button_size: ButtonSize::Default,
-//                 button_type: ButtonType::Submit,
-//                 class: "mx-5 mt-2 custom-class".to_string(),
-//                 id: "my-button".to_string(),
-//                 disabled: Some(false),
-//                 children: rsx! { "Contact Us" },
-//             }
-//         }
-
-//         Outlet::<Route> {}
-//     }
-// }
+#[component]
+pub fn NavLink(to: NavigationTarget, text: String) -> Element {
+    rsx! {
+        Link {
+            active_class: "text-white font-bold underline decoration-white",
+            class: "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium",
+            to,
+            {text}
+        }
+    }
+}

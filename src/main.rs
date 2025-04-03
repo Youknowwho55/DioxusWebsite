@@ -69,9 +69,7 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
 
         // WILL NEED TO SEE WHAT ROUTER TO USE
-        AppRouter {
-        }
-        Router::<Route> {}
+        AppRouter {}
     }
 }
 
